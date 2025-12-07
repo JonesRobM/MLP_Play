@@ -67,14 +67,14 @@ The notebook uses scikit-learn's `make_moons` dataset - two interleaving half-ci
 
 Watch the network learn! The loss curve shows how the model improves over 5,000 epochs:
 
-![Training Loss](figures/training_loss.png)
+![Training Loss](figures/moon_training_loss.png)
 *Loss decreases exponentially as the network learns the pattern*
 
 ### Decision Boundary Visualization
 
 See what the network learned! The decision boundary shows how the MLP separates the two classes:
 
-![Decision Boundary](figures/decision_boundary.png)
+![Decision Boundary](figures/moon_decision_boundary.png)
 *Left: MLP predictions | Right: Ground truth - The network achieves 96.60% accuracy!*
 
 ## 🚀 Further Learning
