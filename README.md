@@ -1,15 +1,23 @@
 # MLP_Play 🧠
 
-**Learn how neural networks work from scratch!** This project implements a Multi-Layer Perceptron (MLP) from the ground up using PyTorch, with **manual backpropagation** to demonstrate the fundamental mechanics of how neural networks learn.
+**Learn how neural networks work from scratch!** This educational repository implements Multi-Layer Perceptrons (MLPs) from the ground up, demonstrating both **manual backpropagation** and modern PyTorch implementations to help you understand the fundamental mechanics of how neural networks learn.
 
-## 🎯 What You'll Learn
+## 🎯 Educational Purpose
 
-This educational notebook shows you how to:
-- 🔢 Build a neural network **without** relying on automatic differentiation
-- 📐 Implement forward propagation (how predictions are made)
-- 🔄 Implement backward propagation (how networks learn from mistakes)
-- 📊 Train a classifier on the classic "moons" dataset
-- 🎨 Visualize decision boundaries to see what the network learned
+This repository is designed for **learning and teaching** the fundamentals of neural networks. Through hands-on implementations and detailed visualisations, you'll gain deep insight into:
+
+- 🔢 How neural networks make predictions (forward propagation)
+- 🔄 How networks learn from their mistakes (backpropagation)
+- 📊 What hidden layers actually "see" in the data
+- 🎨 How decision boundaries emerge during training
+- 📈 The difference between binary and multi-class classification
+
+Perfect for students, educators, and developers who want to truly understand what's happening inside a neural network!
+
+## 📚 Documentation
+
+- **[MLP Background](docs/mlp_background.md)** - Theory and mathematics behind Multi-Layer Perceptrons
+- **[Experiments Guide](docs/experiments.md)** - Detailed walkthrough of each notebook experiment
 
 ## 🚀 Quick Start
 
@@ -26,93 +34,152 @@ Or for GPU support (CUDA 12.6):
 pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cu126
 ```
 
-### Run the Notebook
+### Run the Notebooks
 
 ```bash
-jupyter lab notebooks/mlp.ipynb
+jupyter lab notebooks/moons.ipynb
+# or
+jupyter lab notebooks/wine.ipynb
 ```
 
 ## 📓 What's Inside
 
-The notebook demonstrates a **simple 2-layer neural network** that learns to classify non-linearly separable data:
+This repository contains two educational experiments demonstrating different aspects of MLPs:
 
-- **Input Layer**: 2 features (x, y coordinates)
-- **Hidden Layer**: 4 neurons with sigmoid activation
-- **Output Layer**: 1 neuron for binary classification
+### 🌙 Moons Classification (`moons.ipynb`)
+**Binary Classification with Manual Backpropagation**
 
-### Why Manual Backpropagation?
-
-Most tutorials use frameworks that hide the math. This notebook **shows you the actual gradient calculations** so you understand:
-- How errors propagate backward through layers 🔙
-- How gradients are computed using the chain rule 🔗
-- How weights are updated via gradient descent 📉
-
-## 🎓 Educational Features
-
-✨ **Heavily commented code** - Every line explains what and why
-📊 **Visualizations** - See the training data, loss curves, and decision boundaries
-🔬 **Mathematical explanations** - Gradient formulas and activation derivatives included
-🎯 **96.60% accuracy** - Watch the network learn to separate the moons in just 5,000 epochs!
-
-## 🌙 The Moons Dataset
-
-The notebook uses scikit-learn's `make_moons` dataset - two interleaving half-circles that can't be separated by a straight line. This demonstrates why we need **non-linear activations** in neural networks.
+A from-scratch implementation that shows you the actual mathematics:
+- **Architecture**: 2 inputs → 4 hidden neurones (sigmoid) → 1 output
+- **Dataset**: Non-linearly separable "moons" (10,000 samples)
+- **Special Feature**: Manual backpropagation with detailed gradient calculations
+- **Accuracy**: ~96-97% on test set
 
 ![Moons Dataset](figures/moons_dataset.png)
-*Training and testing data split - notice the two crescent shapes that interleave*
+*Two interleaving crescents that require non-linear separation*
 
-## 📈 Example Results
+### 🍷 Wine Classification (`wine.ipynb`)
+**Multi-Class Classification with PyTorch**
+
+A modern implementation demonstrating multi-class problems:
+- **Architecture**: 13 inputs → 64 hidden neurones (ReLU) → 3 outputs
+- **Dataset**: Wine cultivar classification (178 samples, 13 chemical features)
+- **Special Feature**: Comprehensive visualisations including PCA, correlation matrices, and ROC curves
+- **Accuracy**: ~98% on test set
+
+![Wine PCA](figures/wine_pca.png)
+*Three wine classes visualised in principal component space*
+
+## 🎓 Key Educational Features
+
+### Visualisations Across Both Notebooks
+
+Both experiments include extensive visualisations to build intuition:
+
+✨ **Dataset Exploration** - See the raw data and class distributions
+📊 **Training Dynamics** - Loss curves showing learning progress
+🎨 **Decision Boundaries** - See how the network carves up the feature space
+🧠 **Hidden Layer Activations** - Understand what individual neurones learn
+📈 **Performance Metrics** - Confusion matrices, ROC curves, and accuracy plots
+
+### Code Quality
+
+🔬 **Detailed Comments** - Every line explains the "what" and "why" in British English
+📐 **Mathematical Explanations** - Gradient formulas and activation derivatives
+🏗️ **Two Approaches** - Manual implementation (moons) vs. PyTorch best practices (wine)
+
+## 🌙 Moons Experiment Results
 
 ### Training Progress
-
-Watch the network learn! The loss curve shows how the model improves over 5,000 epochs:
 
 ![Training Loss](figures/moon_training_loss.png)
 *Loss decreases exponentially as the network learns the pattern*
 
-### Decision Boundary Visualization
-
-See what the network learned! The decision boundary shows how the MLP separates the two classes:
+### Decision Boundary
 
 ![Decision Boundary](figures/moon_decision_boundary.png)
-*Left: MLP predictions | Right: Ground truth - The network achieves 96.60% accuracy!*
+*Left: MLP predictions | Right: Ground truth*
 
-## 🚀 Further Learning
+### Hidden Layer Activations
 
-Now that you understand the fundamentals, here are ways to deepen your knowledge:
+![Hidden Activations](figures/moon_hidden_activations.png)
+*How each of the 4 neurones responds to different regions of input space*
 
-### 🔧 Experiments to Try
+## 🍷 Wine Experiment Results
 
-- **Add more layers** - Try a 2-8-4-1 architecture. How does depth affect learning?
-- **Different activations** - Replace sigmoid with ReLU or tanh. What changes?
-- **Change the dataset** - Try `make_circles` or `make_classification` from scikit-learn
-- **Implement momentum** - Add momentum to gradient descent for faster convergence
-- **Try different loss functions** - Implement Binary Cross-Entropy instead of MSE
-- **Add regularization** - Implement L2 regularization to prevent overfitting
+### Feature Relationships
 
-### 📚 Recommended Resources
+![Correlation Matrix](figures/wine_correlation_matrix.png)
+*Understanding which chemical properties are related*
 
-**Video Series:**
-- 🎥 [3Blue1Brown - Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) - Beautiful visualizations of how neural networks work
-- 🎥 [Andrej Karpathy - Neural Networks: Zero to Hero](https://www.youtube.com/watch?v=VMj-3S1tku0) - Build neural nets from scratch
+### Model Performance
 
-**Interactive Learning:**
-- 🎮 [TensorFlow Playground](https://playground.tensorflow.org/) - Interactive neural network visualization
+![Confusion Matrix](figures/wine_confusion_matrix.png)
+*Classification performance across all three wine classes*
+
+![ROC Curves](figures/wine_roc_curves.png)
+*Receiver Operating Characteristic curves showing excellent discrimination*
+
+### What the Network Learnt
+
+![Wine Activations](figures/wine_activation_heatmap.png)
+*Different neurones specialise in detecting different wine types*
+
+## 🔧 Experiments to Try
+
+### Modify the Moons Notebook
+- **Add more layers** - Try 2-8-4-1 architecture
+- **Different activations** - Replace sigmoid with tanh
+- **Change the dataset** - Try `make_circles` or `make_classification`
+- **Implement momentum** - Add momentum to gradient descent
+
+### Modify the Wine Notebook
+- **Adjust architecture** - Try different hidden layer sizes
+- **Add dropout** - Implement regularisation to prevent overfitting
+- **Feature engineering** - Create interaction terms between features
+- **Try other datasets** - Use iris, digits, or breast cancer datasets
+
+## 📚 Learning Resources
+
+### Video Series
+- 🎥 [3Blue1Brown - Neural Networks](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi) - Beautiful visualisations
+- 🎥 [Andrej Karpathy - Neural Networks: Zero to Hero](https://www.youtube.com/watch?v=VMj-3S1tku0) - Build from scratch
+
+### Interactive Learning
+- 🎮 [TensorFlow Playground](https://playground.tensorflow.org/) - Interactive neural network visualisation
 - 📖 [Neural Networks and Deep Learning](http://neuralnetworksanddeeplearning.com/) - Free online book
 
-**Next Steps:**
+### Next Steps
 - Learn about **Convolutional Neural Networks (CNNs)** for image processing
 - Explore **Recurrent Neural Networks (RNNs)** for sequence data
 - Study **PyTorch's autograd** to see how automatic differentiation works
-- Dive into **optimization algorithms** (Adam, RMSprop, AdaGrad)
+- Dive into **optimisation algorithms** (Adam, RMSprop, AdaGrad)
 
-### 💡 Challenges
+## 💡 Challenge Questions
 
-1. Can you achieve >97% accuracy by tuning hyperparameters or training longer?
-2. Can you implement batch training instead of full-batch?
-3. Can you add learning rate decay?
-4. Can you visualize the hidden layer activations?
+1. Why does the moons experiment use sigmoid activation while wine uses ReLU?
+2. Can you explain why the wine experiment needs 64 hidden neurones whilst moons only needs 4?
+3. What would happen if you trained the wine classifier without standardising the features?
+4. Can you achieve >98% accuracy on the wine dataset by tuning hyperparameters?
+5. How do the hidden layer activations differ between correctly and incorrectly classified samples?
+
+## 📁 Repository Structure
+
+```
+MLP_Play/
+├── notebooks/
+│   ├── moons.ipynb       # Binary classification with manual backprop
+│   └── wine.ipynb        # Multi-class classification with PyTorch
+├── figures/              # All visualisations generated by notebooks
+├── docs/
+│   ├── mlp_background.md # Theory and mathematics of MLPs
+│   └── experiments.md    # Detailed explanation of each experiment
+├── requirements.txt      # Python dependencies
+└── README.md            # You are here!
+```
 
 ---
 
-**Perfect for**: Students, developers learning ML fundamentals, or anyone curious about what's really happening inside a neural network! 🎉
+**Built for learning** 🎓 | **Open for exploration** 🔬 | **Perfect for teaching** 👨‍🏫
+
+*This project uses British English spelling throughout all documentation and code comments.*
