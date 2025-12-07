@@ -1,4 +1,4 @@
-# MLP_Play 🧠
+# Introduction to MLPs 🧠 
 
 **Learn how neural networks work from scratch!** This educational repository implements Multi-Layer Perceptrons (MLPs) from the ground up, demonstrating both **manual backpropagation** and modern PyTorch implementations to help you understand the fundamental mechanics of how neural networks learn.
 
